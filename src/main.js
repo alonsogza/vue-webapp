@@ -6,6 +6,7 @@ import Home from './components/Home.vue'
 import Contacto from './components/Contacto.vue'
 import RestaruanteTop from './components/RestaruanteTop.vue'
 import RestaruanteList from './components/RestaruanteList.vue'
+import ImagenPokemon from './components/Imagen-Pokemon.vue' // Agregamos el nuevo Componente para mostrar la Imagen del Pokemon
 
 // Agregamos el vue-router
 import VueRouter from 'vue-router' 
@@ -25,7 +26,13 @@ const routes = [
   {path: '/restaruantes', component: RestaruanteList},
   {path: '/contacto', component: Contacto},
   {path: '/home', component: Home},
-  {path: '/', component: Home},    
+  {path: '/', component: Home},
+  { // Se agrega esta ruta para mostrar las imagenes de los pokemones
+    path: '/imagen-pokemon/:id', 
+    name:'imagen-pokemon', 
+    component: ImagenPokemon
+  },  
+
 ]
 
 //Agregamos el VueRouter
