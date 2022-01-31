@@ -23,7 +23,11 @@ const routes = [
     name:'restaruante-destacado', 
     component: RestaruanteTop
   },  
-  {path: '/restaruantes', component: RestaruanteList},
+  {
+      path: '/restaruantes', 
+      name:'restaruantes', 
+      component: RestaruanteList
+  },
   {path: '/contacto', component: Contacto},
   {path: '/home', component: Home},
   {path: '/', component: Home},

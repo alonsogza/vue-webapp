@@ -17,7 +17,7 @@
                         <!-- <a v-bind:href=item.url class="btn btn-primary"
                             target="_blank">{{ item.name }}
                         </a> -->
-                        <router-link :to="{name:'imagen-pokemon', params:{id: item.name}}"> {{ item.name }} </router-link> <!-- Se agrega una nueva ruta para mostrar la imagen-->
+                        <router-link :to="{name:'imagen-pokemon', params:{id: item.name, idPage: siguiente_bloque}}"> {{ item.name }} </router-link> <!-- Se agrega una nueva ruta para mostrar la imagen-->
                     </li>
                 </ul>
             </div>
@@ -33,14 +33,21 @@ import axios from 'axios';
         name: 'restaruante-list',
         // Se agrega el ciclo de vida MOUNTED para ejecutar el metodo
         mounted(){ 
-            this.getPokemones();  
+            // let Page = 0;
+            // if {!(this.$route.params.idPage)}
+            const page = this.$route.params.idPage !== undefined ? this.$route.params.idPage : 0;
+            this.siguiente_bloque = page
+
+            // this.idPage = this.$route.params.idPage
+            this.getPokemones(page);  
+            // console.log(this.siguiente_bloque, page);
         }, 
         data(){
             return{
                 texto: 'Página Restaruantes LIST',
                 msg: 'Lista de Pokemones',
                 infoLista: [], // Agegamos el arreglo donde se almacena la respuesta de la API
-                siguiente_bloque: 0,
+                siguiente_bloque: this.page, // 0,
             }
         },
         // Creamos un METODO para usar AXIOS

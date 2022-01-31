@@ -12,17 +12,20 @@
         <!-- </ul>  -->
         <!-- <button v-on:click="goBack" class="btn btn-primary">Regresar</button> -->
 
+        <!-- <p>Id Pge: {{idPage}}</p>    -->
         <div class="position-relative">
             <div class="position-absolute top-0 start-50 translate-middle-x">
                 <div class="card" style="width: 12rem;">
                 <img :src="pokemon.url" class="card-img-top" :alt="pokemon.name">
                     <div class="card-body">
                         <h5 class="card-title"><strong>{{pokemon.name}}</strong></h5>
-                        <button v-on:click="goBack" class="btn btn-primary">Regresar</button>
+                        <!-- <button v-on:click="goBack" class="btn btn-primary">Regresar</button> -->
+                        <!-- <router-link to="/restaruantes, params:{idPage: idPage}">Restaurantes</router-link> -->
+                        <router-link :to="{name:'restaruantes', params:{idPage: idPage}}"> Regresar </router-link> <!-- Se agrega una nueva ruta para mostrar la imagen-->
                     </div>
                 </div>                        
             </div>
-        </div>    
+        </div> 
     </div>
 </template>
 
@@ -44,10 +47,12 @@ import axios from 'axios';
         // Se agrega el ciclo de vida MOUNTED para ejecutar el metodo
         mounted(){ 
             this.getPokemon(this.$route.params.id);  
+            this.idPage = this.$route.params.idPage;
         }, 
         data(){
             return{
                 texto: this.$route.params.id,
+                idPage: this.$route.params.idPage,
                 // msg: 'Lista de Pokemones',
                 pokemon: {
                     name: "",
